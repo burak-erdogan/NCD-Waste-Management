@@ -76,6 +76,10 @@ export class Recycler {
           static findRecyclers(offset: u32, limit: u32): Recycler[] {
                                 return recyclers.values(offset, limit + offset);
                                 }
+          static findRecyclersByName(name: string): Recycler {
+                                return recyclers.getSome(math.hash32<string>(name));
+          }
+                                   
           }
 
 
@@ -132,11 +136,14 @@ export class Waste {
                   
 
                   static transferWaste(id: u32, recycler: string): void {
-                                    logging.log("Waste transfered to:" + recycler);
                                     const waste = wastes.getSome(id);
+                                    const recyc = Recycler.findRecyclersByName(recycler);
                                     assert(context.sender == waste.responsible, "You are not the responsible for this waste");
+                                    assert(recyc.name == recycler, "Recycler must be registered");
                                     waste.responsible = recycler;
                                     waste.status = "transfered";
+                                    logging.log("Waste transfered to:" + recycler);
+                                    logging.log("Waste status is:" + waste.status);
                                     wastes.set(waste.id, waste); 
                   }
 
@@ -148,11 +155,12 @@ export class Waste {
                                     assert(context.sender == waste.responsible, "You are not the responsible for this waste");
                                     const withdraw = ContractPromiseBatch.create(recycler);
                                     withdraw.transfer(deposited);
+                                    waste.status = "recycled";
+                                    logging.log("Deposit transferred to" + context.sender);
                                     logging.log("Waste recycled by:" + context.sender);
                                     logging.log("Waste name is:" + waste.name);
                                     logging.log("Waste desc is:" + waste.desc);
-                                    logging.log(`Recycle reward is:${deposited} NEAR`);
-                                    waste.status = "recycled";
+                                    logging.log("Waste status is:" + waste.status);
                                     wastes.set(waste.id, waste);
                                     return waste;
                   }

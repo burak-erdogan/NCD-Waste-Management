@@ -1,5 +1,6 @@
 # Waste Management - Near Protocol
 Produce waste, register, transfer and recycle it!
+This project developed in Patika.dev's Near Bootcamp.
 
 # Roles
 - Producer / Can produce waste
@@ -7,20 +8,25 @@ Produce waste, register, transfer and recycle it!
 
 # Functions
 ## Producer / You need to be a Producer to produce waste.
-beProducer(company:string, sector: string)
-findProducerById(id:u32)
-findProducers(offset: u32, limit: u32=10)
+```ts
+-beProducer(company:string, sector: string)  // Call function
+-findProducerById(id:u32)                    // View function
+-findProducers(offset: u32, limit: u32=10)   // View function         
+```
 ## Recycler / You need to be a Recycler to recycle waste.
-beRecycler(name:AccountId, type:string)
-findRecyclersById(id:u32)
-findRecyclers(offset:u32, limit:u32=10)
+```ts
+-beRecycler(name:AccountId, type:string)      // Call function
+-findRecyclersById(id:u32)                    // View function        
+-findRecyclers(offset:u32, limit:u32=10)      // View function         
+```
 ## Waste
-produce(name:string, desc:string, deposit:u8)
-transfer(id:u32, recycler:string)
-recycle(id:u32)
-findWasteById(id:u32)
-findWastes(offset: u32, limit:u32=10)
-
+```ts
+-produce(name:string, desc:string, deposit:u8) // Call function
+-transfer(id:u32, recycler:string)             // Call function
+-recycle(id:u32)                               // Call function       
+-findWasteById(id:u32)                         // View function                          
+-findWastes(offset: u32, limit:u32=10)         // View function   
+```
 # Build and devDeploy
 ```ts
 yarn
@@ -33,7 +39,7 @@ echo $CONTRACT
 # Functions Usage
 BeProducer
 ```ts
-near call $CONTRACT beProducer '{"company": "Man Turkiye", "sector": "Automotive"}' --accountId producer1.testnet
+near call $CONTRACT beProducer '{"company": "TOGG", "sector": "Automotive"}' --accountId producer1.testnet
 ```
 View Producer By ID
 ```ts
@@ -45,11 +51,11 @@ near view $CONTRACT findProducers '{"offset" : 0 }'
 ```
 BeRecycler
 ```ts
-near call $CONTRACT beRecycler '{"name" : "recycler.testnet", "type": "mixed"}' --accountId recycler.testnet
+near call $CONTRACT beRecycler '{"name" : "RECYCLERID", "type": "mixed"}' --accountId recycler.testnet
 ```
 View Recycler by Id
 ```ts
-near view $CONTRACT findRecyclersById '{"id" : 124636559}'
+near view $CONTRACT findRecyclersById '{"id" : RecyclerID}'
 ```
 View Recyclers
 ```ts
@@ -61,15 +67,15 @@ near call $CONTRACT produce '{"name": "TestWaste", "desc":"Metal", "deposit": 1 
 ```
 Transfer Waste 
 ```ts
-near call $CONTRACT transfer '{"id" : 3218353101 , "recycler" : "recycler.testnet"}' --accountId producer1.testnet
+near call $CONTRACT transfer '{"id" : WasteID , "recycler" : "RecyclerAccountID"}' --accountId producer1.testnet
 ```
 Recycle Waste
 ```ts
-near call $CONTRACT recycle '{"id": 2909267869}' --accountId recycler.testnet
+near call $CONTRACT recycle '{"id": WasteID}' --accountId recycler.testnet
 ```
 View Waste by ID
 ```ts
-near view $CONTRACT findWasteById '{"id": 2903064455}'
+near view $CONTRACT findWasteById '{"id": WasteID}'
 ```
 View Wastes
 ```ts
