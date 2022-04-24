@@ -1,4 +1,3 @@
-// assembly/model.ts
 import {PersistentUnorderedMap, math, Context, context, u128, logging, ContractPromiseBatch} from "near-sdk-as";
 
 import { AccountId, asNEAR, Amount } from "./utils";
@@ -80,7 +79,7 @@ export class Recycler {
                                 return recyclers.getSome(math.hash32<string>(name));
           }
                                    
-          }
+         }
 
 
 
@@ -149,18 +148,18 @@ export class Waste {
 
                   static recycleWaste(id: u32): Waste {
                                     const waste = wastes.getSome(id);
-                                    const deposited = waste.deposit = Context.attachedDeposit;
+                                    const deposited = wastes.getSome(id).deposit;
                                     const recycler = context.sender;
                                     assert(deposited <= maxamountlimit, "You can't withdraw more than 20 NEAR");
                                     assert(context.sender == waste.responsible, "You are not the responsible for this waste");
-                                    const withdraw = ContractPromiseBatch.create(recycler);
-                                    withdraw.transfer(deposited);
-                                    waste.status = "recycled";
                                     logging.log("Deposit transferred to" + context.sender);
                                     logging.log("Waste recycled by:" + context.sender);
                                     logging.log("Waste name is:" + waste.name);
                                     logging.log("Waste desc is:" + waste.desc);
                                     logging.log("Waste status is:" + waste.status);
+                                    const withdraw = ContractPromiseBatch.create(recycler);
+                                    withdraw.transfer(deposited);
+                                    waste.status = "recycled";
                                     wastes.set(waste.id, waste);
                                     return waste;
                   }
