@@ -1,7 +1,8 @@
 # Waste Management - Near Protocol
-Produce waste, register, transfer and recycle it!
-This project developed in Patika.dev's Near Bootcamp.
-Here is Loom video : https://www.loom.com/share/8e90d36905b54e79b9cbfb6de1388a07
+-Produce waste, register, transfer and recycle it!
+-This project developed in Patika.dev's Near Bootcamp.
+-Here is Loom video : https://www.loom.com/share/8e90d36905b54e79b9cbfb6de1388a07
+
 # Roles
 - Producer / Can produce and transfer waste
 - Recycler / Can recycle waste
