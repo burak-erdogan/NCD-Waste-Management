@@ -79,5 +79,5 @@ near view $CONTRACT findWasteById '{"id": WasteID}'
 ```
 View Wastes
 ```ts
-near view $CONTRACT findWastes '{"offset" : 1, "limit" : 10}'
+near view $CONTRACT findWastes '{"offset" : 0}'
 ```
