@@ -39,7 +39,7 @@ echo $CONTRACT
 # Functions Usage
 BeProducer
 ```ts
-near call $CONTRACT beProducer '{"company": "TOGG", "sector": "Automotive"}' --accountId producer1.testnet
+near call $CONTRACT beProducer '{"company": "TOGG", "sector": "Automotive"}' --accountId ProducerAccountID
 ```
 View Producer By ID
 ```ts
@@ -51,7 +51,7 @@ near view $CONTRACT findProducers '{"offset" : 0 }'
 ```
 BeRecycler
 ```ts
-near call $CONTRACT beRecycler '{"name" : "RECYCLERID", "type": "mixed"}' --accountId recycler.testnet
+near call $CONTRACT beRecycler '{"name" : "RECYCLERID", "type": "mixed"}' --accountId RecyclerAccountID
 ```
 View Recycler by Id
 ```ts
@@ -67,11 +67,11 @@ near call $CONTRACT produce '{"name": "TestWaste", "desc":"Metal", "deposit": 1 
 ```
 Transfer Waste 
 ```ts
-near call $CONTRACT transfer '{"id" : WasteID , "recycler" : "RecyclerAccountID"}' --accountId producer1.testnet
+near call $CONTRACT transfer '{"id" : WasteID , "recycler" : "RecyclerAccountID"}' --accountId ProducerAccountID
 ```
 Recycle Waste
 ```ts
-near call $CONTRACT recycle '{"id": WasteID}' --accountId recycler.testnet
+near call $CONTRACT recycle '{"id": WasteID}' --accountId RecyclerAccountID
 ```
 View Waste by ID
 ```ts
