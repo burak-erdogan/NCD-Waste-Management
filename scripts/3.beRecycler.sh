@@ -17,5 +17,9 @@ echo 'type is Recycling Type, You can write what you want. Example : Metal Recyc
 echo 'type is Recycling Type, You can write what you want. Example : Metal Recycler, Burner, Washer etc.'
 echo 'You can change before using script'
 echo
+echo 'You need to change "RECYCLERNAME" on script'
+echo 'You need to change "RECYCLERNAME" on script'
+echo 'You need to change "RECYCLERNAME" on script'
+echo 'You need to change "RECYCLERNAME" on script'
 echo
-near call $CONTRACT beRecycler '{"name" : "$RECYCLER", "type": "mixed"}' --accountId $RECYCLER
+near call $CONTRACT beRecycler '{"name" : "RECYCLERNAME", "type": "mixed"}' --accountId $RECYCLER

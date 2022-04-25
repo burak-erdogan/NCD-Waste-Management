@@ -26,4 +26,4 @@ echo 'You need to be change "WasteID" on script'
 echo
 echo
 echo
-near call $CONTRACT recycle '{"id": WasteID}' --accountId $RECYCLER
+near call $CONTRACT recycle '{"id": 4047905235}' --accountId $RECYCLER

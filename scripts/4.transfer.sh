@@ -19,11 +19,17 @@ echo 'View Waste on the contract'
 echo 'You need to be change "WasteID" on script'
 near view $CONTRACT findWastes '{"offset" : 0}'
 echo 
-echo 'You need to be change "WasteID" on script'
-echo 'You need to be change "WasteID" on script'
-echo 'You need to be change "WasteID" on script'
-echo 'You need to be change "WasteID" on script'
+echo 'You need to change "WasteID" on script'
+echo 'You need to change "WasteID" on script'
+echo 'You need to change "WasteID" on script'
+echo 'You need to change "WasteID" on script'
+echo
+near view $CONTRACT findRecyclers '{"offset" : 0}'
 echo
 echo
+echo 'You need to change "RECYCLERNAME" on script'
+echo 'You need to change "RECYCLERNAME" on script'
+echo 'You need to change "RECYCLERNAME" on script'
+echo 'You need to change "RECYCLERNAME" on script'
 echo
-near call $CONTRACT transfer '{"id" : WasteID , "recycler" : "$RECYCLER"}' --accountId $PRODUCER
+near call $CONTRACT transfer '{"id" : 4047905235 , "recycler" : "recycler.testnet"}' --accountId $PRODUCER

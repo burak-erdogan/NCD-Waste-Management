@@ -152,11 +152,11 @@ export class Waste {
                                     const recycler = context.sender;
                                     assert(deposited <= maxamountlimit, "You can't withdraw more than 20 NEAR");
                                     assert(context.sender == waste.responsible, "You are not the responsible for this waste");
-                                    logging.log("Deposit transferred to" + context.sender);
-                                    logging.log("Waste recycled by:" + context.sender);
-                                    logging.log("Waste name is:" + waste.name);
-                                    logging.log("Waste desc is:" + waste.desc);
-                                    logging.log("Waste status is:" + waste.status);
+                                    logging.log("Deposit transferred to " + context.sender);
+                                    logging.log("Waste recycled by: " + context.sender);
+                                    logging.log("Waste name is: " + waste.name);
+                                    logging.log("Waste desc is: " + waste.desc);
+                                    logging.log("Waste status is: " + waste.status);
                                     const withdraw = ContractPromiseBatch.create(recycler);
                                     withdraw.transfer(deposited);
                                     waste.status = "recycled";
